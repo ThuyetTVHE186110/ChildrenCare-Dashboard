@@ -1,0 +1,435 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Services Management - Healthcare Admin</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="stylesheet" href="assets/css/services.css">
+</head>
+
+<body>
+    <nav class="sidebar">
+        <div class="sidebar-header">
+            <div class="sidebar-logo">HealthCare Admin</div>
+        </div>
+
+        <!-- Staff Section -->
+        <div class="nav-section">
+            <div class="nav-section-title">Staff Management</div>
+            <a href="services.html" class="nav-item">
+                <i class="fas fa-list"></i>
+                <span>Services List</span>
+            </a>
+            <a href="#" class="nav-item">
+                <i class="fas fa-calendar-check"></i>
+                <span>Reservations</span>
+            </a>
+            <a href="#" class="nav-item">
+                <i class="fas fa-stethoscope"></i>
+                <span>Medical Examinations</span>
+            </a>
+            <a href="#" class="nav-item">
+                <i class="fas fa-users"></i>
+                <span>Customers</span>
+            </a>
+            <a href="#" class="nav-item">
+                <i class="fas fa-comments"></i>
+                <span>Feedbacks</span>
+            </a>
+            <a href="#" class="nav-item">
+                <i class="fas fa-prescription"></i>
+                <span>Prescriptions</span>
+            </a>
+        </div>
+
+        <!-- Manager Section -->
+        <div class="nav-section">
+            <div class="nav-section-title">Manager Tools</div>
+            <a href="#" class="nav-item">
+                <i class="fas fa-chart-line"></i>
+                <span>Dashboard</span>
+            </a>
+            <a href="posts.html" class="nav-item">
+                <i class="fas fa-newspaper"></i>
+                <span>Posts</span>
+            </a>
+            <a href="sliders.html" class="nav-item">
+                <i class="fas fa-images"></i>
+                <span>Sliders</span>
+            </a>
+        </div>
+
+        <!-- Admin Section -->
+        <div class="nav-section">
+            <div class="nav-section-title">Administration</div>
+            <a href="#" class="nav-item">
+                <i class="fas fa-user-shield"></i>
+                <span>Users Management</span>
+            </a>
+            <a href="#" class="nav-item">
+                <i class="fas fa-cog"></i>
+                <span>Settings</span>
+            </a>
+        </div>
+    </nav>
+
+    <div class="main-content">
+        <div class="top-nav">
+            <div class="menu-toggle">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+            <div class="search-bar">
+                <i class="fas fa-search"></i>
+                <input type="text" placeholder="Search...">
+            </div>
+            <div class="user-menu">
+                <div class="notifications-wrapper">
+                    <div class="notifications">
+                        <i class="fas fa-bell"></i>
+                        <span class="notifications-count">3</span>
+                    </div>
+                    <div class="notifications-dropdown">
+                        <div class="notifications-header">
+                            <span class="notifications-title">Notifications</span>
+                            <span class="mark-all-read">Mark all as read</span>
+                        </div>
+                        <div class="notification-list">
+                            <div class="notification-item unread">
+                                <div class="notification-icon">
+                                    <i class="fas fa-calendar"></i>
+                                </div>
+                                <div class="notification-content">
+                                    <div class="notification-text">New appointment request from Sarah Johnson</div>
+                                    <div class="notification-time">5 minutes ago</div>
+                                </div>
+                            </div>
+                            <div class="notification-item unread">
+                                <div class="notification-icon">
+                                    <i class="fas fa-user-plus"></i>
+                                </div>
+                                <div class="notification-content">
+                                    <div class="notification-text">New patient registration: Michael Brown</div>
+                                    <div class="notification-time">2 hours ago</div>
+                                </div>
+                            </div>
+                            <div class="notification-item">
+                                <div class="notification-icon">
+                                    <i class="fas fa-comment-medical"></i>
+                                </div>
+                                <div class="notification-content">
+                                    <div class="notification-text">New feedback received for Dr. Smith</div>
+                                    <div class="notification-time">1 day ago</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="user-profile-wrapper">
+                    <div class="user-profile">
+                        <div class="user-avatar">
+                            <i class="fas fa-user"></i>
+                        </div>
+                        <div class="user-info">
+                            <span class="user-name">John Doe</span>
+                            <span class="user-role">Administrator</span>
+                        </div>
+                    </div>
+                    <div class="user-dropdown">
+                        <div class="user-dropdown-header">
+                            <div class="user-avatar">
+                                <i class="fas fa-user"></i>
+                            </div>
+                            <div class="user-name">John Doe</div>
+                            <div class="user-role">Administrator</div>
+                        </div>
+                        <a href="#" class="user-dropdown-item">
+                            <i class="fas fa-user-circle"></i>
+                            <span>My Profile</span>
+                        </a>
+                        <a href="#" class="user-dropdown-item">
+                            <i class="fas fa-cog"></i>
+                            <span>Settings</span>
+                        </a>
+                        <a href="#" class="user-dropdown-item">
+                            <i class="fas fa-question-circle"></i>
+                            <span>Help Center</span>
+                        </a>
+                        <a href="#" class="user-dropdown-item">
+                            <i class="fas fa-sign-out-alt"></i>
+                            <span>Sign Out</span>
+                        </a>
+                    </div>
+                </div>
+                <div class="theme-toggle" title="Toggle theme"></div>
+            </div>
+        </div>
+
+        <div class="page-header">
+            <div class="header-content">
+                <h1>Services Management</h1>
+                <button class="btn-primary" id="newServiceButton">
+                    <i class="fas fa-plus"></i>
+                    New Service
+                </button>
+            </div>
+
+            <!-- Filter Section -->
+            <div class="filters-section">
+                <div class="search-filters">
+                    <div class="search-bar">
+                        <i class="fas fa-search"></i>
+                        <input type="text" placeholder="Search by title or brief info...">
+                    </div>
+                    <div class="filter-group">
+                        <select class="filter-select" id="categoryFilter">
+                            <option value="">All Categories</option>
+                            <option value="consultation">Consultation</option>
+                            <option value="treatment">Treatment</option>
+                            <option value="therapy">Therapy</option>
+                            <option value="examination">Examination</option>
+                        </select>
+                        <select class="filter-select" id="statusFilter">
+                            <option value="">All Status</option>
+                            <option value="active">Active</option>
+                            <option value="hidden">Hidden</option>
+                            <option value="draft">Draft</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="active-filters">
+                    <!-- Active filters will be added here dynamically -->
+                </div>
+            </div>
+        </div>
+
+        <!-- Services Table -->
+        <div class="services-table">
+            <table>
+                <thead>
+                    <tr>
+                        <th class="sortable" data-sort="id">ID <i class="fas fa-sort"></i></th>
+                        <th>Thumbnail</th>
+                        <th class="sortable" data-sort="title">Title <i class="fas fa-sort"></i></th>
+                        <th class="sortable" data-sort="category">Category <i class="fas fa-sort"></i></th>
+                        <th class="sortable" data-sort="listPrice">List Price <i class="fas fa-sort"></i></th>
+                        <th class="sortable" data-sort="salePrice">Sale Price <i class="fas fa-sort"></i></th>
+                        <th class="sortable" data-sort="featured">Featured <i class="fas fa-sort"></i></th>
+                        <th class="sortable" data-sort="status">Status <i class="fas fa-sort"></i></th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <!-- Services will be populated dynamically -->
+                </tbody>
+            </table>
+        </div>
+
+        <div class="pagination">
+            <div class="pagination-info">
+                Showing <span>1-9</span> of <span>18</span> sliders
+            </div>
+            <div class="pagination-controls">
+                <button class="btn-icon" disabled>
+                    <i class="fas fa-chevron-left"></i>
+                </button>
+                <div class="page-numbers">
+                    <button class="active">1</button>
+                    <button>2</button>
+                </div>
+                <button class="btn-icon">
+                    <i class="fas fa-chevron-right"></i>
+                </button>
+            </div>
+            <div class="items-per-page">
+                <select>
+                    <option value="9">9 per page</option>
+                    <option value="18">18 per page</option>
+                    <option value="27">27 per page</option>
+                </select>
+            </div>
+        </div>
+    </div>
+
+    <!-- Service Edit/Add Modal -->
+    <div class="modal" id="serviceModal">
+        <div class="modal-overlay"></div>
+        <div class="modal-container">
+            <div class="modal-header">
+                <h2 class="modal-title">Edit Service</h2>
+                <button class="modal-close">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <div class="modal-content">
+                <form id="serviceForm" class="service-form">
+                    <input type="hidden" name="id">
+                    <input type="hidden" name="images" id="serviceImages">
+
+                    <div class="form-group">
+                        <label for="serviceTitle">Title</label>
+                        <input type="text" id="serviceTitle" name="title" required>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="serviceCategory">Category</label>
+                            <select id="serviceCategory" name="category" required>
+                                <option value="consultation">Consultation</option>
+                                <option value="treatment">Treatment</option>
+                                <option value="therapy">Therapy</option>
+                                <option value="examination">Examination</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="numPersons">Number of Persons</label>
+                            <input type="number" id="numPersons" name="numPersons" min="1" required>
+                        </div>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="listPrice">List Price</label>
+                            <input type="number" id="listPrice" name="listPrice" min="0" step="0.01" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="salePrice">Sale Price</label>
+                            <input type="number" id="salePrice" name="salePrice" min="0" step="0.01">
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="serviceBrief">Brief Information</label>
+                        <textarea id="serviceBrief" name="brief" rows="2" required></textarea>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="serviceDescription">Description</label>
+                        <textarea id="serviceDescription" name="description" rows="6" required></textarea>
+                    </div>
+
+                    <div class="image-upload-section">
+                        <div class="thumbnail-upload">
+                            <label>Main Thumbnail</label>
+                            <div class="image-preview">
+                                <img src="" alt="Service thumbnail preview" id="thumbnailPreview">
+                                <div class="image-overlay">
+                                    <i class="fas fa-camera"></i>
+                                    <span>Change Thumbnail</span>
+                                </div>
+                            </div>
+                            <input type="file" id="thumbnailInput" accept="image/*" hidden>
+                        </div>
+
+                        <div class="additional-images">
+                            <label>Additional Images</label>
+                            <div class="image-gallery">
+                                <!-- Additional images will be added here -->
+                                <div class="add-image-btn">
+                                    <i class="fas fa-plus"></i>
+                                </div>
+                            </div>
+                            <input type="file" id="additionalImagesInput" accept="image/*" multiple hidden>
+                        </div>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label class="switch-wrapper">
+                                <input type="checkbox" id="serviceFeatured" name="featured">
+                                <span class="switch"></span>
+                                <span class="switch-label">Featured</span>
+                            </label>
+                        </div>
+                        <div class="form-group">
+                            <label for="serviceStatus">Status</label>
+                            <select id="serviceStatus" name="status" required>
+                                <option value="active">Active</option>
+                                <option value="hidden">Hidden</option>
+                                <option value="draft">Draft</option>
+                            </select>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button class="btn-secondary" data-action="cancel">Cancel</button>
+                <button type="submit" class="btn-primary" data-action="save">Save Changes</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Service Details Modal -->
+    <div class="modal" id="serviceDetailsModal">
+        <div class="modal-overlay"></div>
+        <div class="modal-container">
+            <div class="modal-header">
+                <h2 class="modal-title">Service Details</h2>
+                <button class="modal-close">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <div class="modal-content">
+                <div class="service-details">
+                    <div class="service-preview">
+                        <img src="" alt="Service thumbnail" id="detailsThumbnail">
+                        <div class="service-info">
+                            <div class="service-status-badge"></div>
+                            <div class="service-category-badge"></div>
+                            <div class="service-featured-badge"></div>
+                        </div>
+                    </div>
+
+                    <div class="details-section">
+                        <div class="detail-group">
+                            <label>Title</label>
+                            <div class="detail-value" id="detailsTitle"></div>
+                        </div>
+
+                        <div class="detail-row">
+                            <div class="detail-group">
+                                <label>List Price</label>
+                                <div class="detail-value" id="detailsListPrice"></div>
+                            </div>
+                            <div class="detail-group">
+                                <label>Sale Price</label>
+                                <div class="detail-value" id="detailsSalePrice"></div>
+                            </div>
+                        </div>
+
+                        <div class="detail-group">
+                            <label>Brief Information</label>
+                            <div class="detail-value" id="detailsBrief"></div>
+                        </div>
+
+                        <div class="detail-group">
+                            <label>Description</label>
+                            <div class="detail-value" id="detailsDescription"></div>
+                        </div>
+
+                        <div class="detail-group">
+                            <label>Additional Images</label>
+                            <div class="details-image-gallery" id="detailsImageGallery"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button class="btn-secondary" data-action="close">Close</button>
+                <button class="btn-primary" data-action="edit">
+                    <i class="fas fa-edit"></i>
+                    Edit Service
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <script src="assets/js/main.js"></script>
+    <script src="assets/js/services.js"></script>
+</body>
+
+</html>
