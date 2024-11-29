@@ -4,10 +4,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Posts Management - Healthcare Admin</title>
+    <title>Users Management - Healthcare Admin</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="assets/css/style.css">
-    <link rel="stylesheet" href="assets/css/posts.css">
+    <link rel="stylesheet" href="assets/css/users.css">
 </head>
 
 <body>
@@ -76,7 +76,6 @@
         </div>
     </nav>
 
-    <!-- Main Content Area -->
     <div class="main-content">
         <div class="top-nav">
             <div class="menu-toggle">
@@ -166,17 +165,16 @@
                         </a>
                     </div>
                 </div>
-                <div class="theme-toggle" title="Toggle theme">
-                </div>
+                <div class="theme-toggle" title="Toggle theme"></div>
             </div>
         </div>
 
         <div class="page-header">
             <div class="header-content">
-                <h1>Posts Management</h1>
-                <button class="btn-primary" id="newPostButton">
+                <h1>Users Management</h1>
+                <button class="btn-primary" id="newUserButton">
                     <i class="fas fa-plus"></i>
-                    New Post
+                    New User
                 </button>
             </div>
 
@@ -185,25 +183,26 @@
                 <div class="search-filters">
                     <div class="search-bar">
                         <i class="fas fa-search"></i>
-                        <input type="text" placeholder="Search by title...">
+                        <input type="text" placeholder="Search by name, email or mobile...">
                     </div>
                     <div class="filter-group">
-                        <select class="filter-select" id="categoryFilter">
-                            <option value="">All Categories</option>
-                            <option value="news">News</option>
-                            <option value="health">Health</option>
-                            <option value="medical">Medical</option>
-                            <option value="lifestyle">Lifestyle</option>
+                        <select class="filter-select" id="genderFilter">
+                            <option value="">All Genders</option>
+                            <option value="male">Male</option>
+                            <option value="female">Female</option>
+                            <option value="other">Other</option>
                         </select>
-                        <select class="filter-select" id="authorFilter">
-                            <option value="">All Authors</option>
-                            <!-- Authors will be populated dynamically -->
+                        <select class="filter-select" id="roleFilter">
+                            <option value="">All Roles</option>
+                            <option value="admin">Administrator</option>
+                            <option value="manager">Manager</option>
+                            <option value="staff">Staff</option>
                         </select>
                         <select class="filter-select" id="statusFilter">
                             <option value="">All Status</option>
-                            <option value="published">Published</option>
-                            <option value="draft">Draft</option>
-                            <option value="archived">Archived</option>
+                            <option value="active">Active</option>
+                            <option value="inactive">Inactive</option>
+                            <option value="blocked">Blocked</option>
                         </select>
                     </div>
                 </div>
@@ -213,23 +212,24 @@
             </div>
         </div>
 
-        <!-- Posts Table -->
-        <div class="posts-table">
+        <!-- Users Table -->
+        <div class="users-table">
             <table>
                 <thead>
                     <tr>
                         <th class="sortable" data-sort="id">ID <i class="fas fa-sort"></i></th>
-                        <th>Thumbnail</th>
-                        <th class="sortable" data-sort="title">Title <i class="fas fa-sort"></i></th>
-                        <th class="sortable" data-sort="category">Category <i class="fas fa-sort"></i></th>
-                        <th class="sortable" data-sort="author">Author <i class="fas fa-sort"></i></th>
-                        <th class="sortable" data-sort="featured">Featured <i class="fas fa-sort"></i></th>
+                        <th>Avatar</th>
+                        <th class="sortable" data-sort="fullName">Full Name <i class="fas fa-sort"></i></th>
+                        <th class="sortable" data-sort="gender">Gender <i class="fas fa-sort"></i></th>
+                        <th class="sortable" data-sort="email">Email <i class="fas fa-sort"></i></th>
+                        <th class="sortable" data-sort="mobile">Mobile <i class="fas fa-sort"></i></th>
+                        <th class="sortable" data-sort="role">Role <i class="fas fa-sort"></i></th>
                         <th class="sortable" data-sort="status">Status <i class="fas fa-sort"></i></th>
                         <th>Actions</th>
                     </tr>
                 </thead>
                 <tbody>
-                    <!-- Posts will be populated dynamically -->
+                    <!-- Users will be populated dynamically -->
                 </tbody>
             </table>
         </div>
@@ -237,7 +237,7 @@
         <!-- Pagination -->
         <div class="pagination">
             <div class="pagination-info">
-                Showing <span>1-10</span> of <span>25</span> posts
+                Showing <span>1-10</span> of <span>25</span> users
             </div>
             <div class="pagination-controls">
                 <button class="btn-icon" disabled>
@@ -262,77 +262,77 @@
         </div>
     </div>
 
-    <!-- Post Edit Modal -->
-    <div class="modal" id="postModal">
+    <!-- User Edit/Add Modal -->
+    <div class="modal" id="userModal">
         <div class="modal-overlay"></div>
         <div class="modal-container">
             <div class="modal-header">
-                <h2 class="modal-title">Edit Post</h2>
+                <h2 class="modal-title">Edit User</h2>
                 <button class="modal-close">
                     <i class="fas fa-times"></i>
                 </button>
             </div>
             <div class="modal-content">
-                <form id="postForm" class="post-form">
-                    <div class="form-group">
-                        <label for="postTitle">Title</label>
-                        <input type="text" id="postTitle" name="title" required>
-                    </div>
+                <form id="userForm" class="user-form">
+                    <input type="hidden" name="id">
 
-                    <div class="form-row">
-                        <div class="form-group">
-                            <label for="postCategory">Category</label>
-                            <select id="postCategory" name="category" required>
-                                <option value="news">News</option>
-                                <option value="health">Health</option>
-                                <option value="medical">Medical</option>
-                                <option value="lifestyle">Lifestyle</option>
-                            </select>
-                        </div>
-                        <div class="form-group">
-                            <label for="postAuthor">Author</label>
-                            <select id="postAuthor" name="author" required>
-                                <!-- Authors will be populated dynamically -->
-                            </select>
-                        </div>
-                    </div>
-
-                    <div class="form-group">
-                        <label for="postBrief">Brief Information</label>
-                        <textarea id="postBrief" name="brief" rows="2" required></textarea>
-                    </div>
-
-                    <div class="form-group">
-                        <label for="postDescription">Description</label>
-                        <textarea id="postDescription" name="description" rows="6" required></textarea>
-                    </div>
-
-                    <div class="image-upload-container">
-                        <div class="image-preview">
-                            <img src="" alt="Post thumbnail preview" id="thumbnailPreview">
-                            <div class="image-overlay">
+                    <div class="avatar-upload">
+                        <div class="avatar-preview">
+                            <img src="" alt="User avatar preview" id="avatarPreview">
+                            <div class="avatar-overlay">
                                 <i class="fas fa-camera"></i>
-                                <span>Change Thumbnail</span>
+                                <span>Change Avatar</span>
                             </div>
                         </div>
-                        <input type="file" id="thumbnailInput" accept="image/*" hidden>
-                        <p class="image-hint">Recommended size: 800x600px</p>
+                        <input type="file" id="avatarInput" accept="image/*" hidden>
                     </div>
 
                     <div class="form-row">
                         <div class="form-group">
-                            <label class="switch-wrapper">
-                                <input type="checkbox" id="postFeatured" name="featured">
-                                <span class="switch"></span>
-                                <span class="switch-label">Featured</span>
-                            </label>
+                            <label for="userFullName">Full Name</label>
+                            <input type="text" id="userFullName" name="fullName" required>
                         </div>
                         <div class="form-group">
-                            <label for="postStatus">Status</label>
-                            <select id="postStatus" name="status" required>
-                                <option value="published">Published</option>
-                                <option value="draft">Draft</option>
-                                <option value="archived">Archived</option>
+                            <label for="userGender">Gender</label>
+                            <select id="userGender" name="gender" required>
+                                <option value="male">Male</option>
+                                <option value="female">Female</option>
+                                <option value="other">Other</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="userEmail">Email</label>
+                            <input type="email" id="userEmail" name="email" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="userMobile">Mobile</label>
+                            <input type="tel" id="userMobile" name="mobile" required>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="userAddress">Address</label>
+                        <textarea id="userAddress" name="address" rows="2"></textarea>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="userRole">Role</label>
+                            <select id="userRole" name="role" required>
+                                <option value="admin">Administrator</option>
+                                <option value="manager">Manager</option>
+                                <option value="staff">Staff</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="userStatus">Status</label>
+                            <select id="userStatus" name="status" required>
+                                <option value="active">Active</option>
+                                <option value="inactive">Inactive</option>
+                                <option value="blocked">Blocked</option>
                             </select>
                         </div>
                     </div>
@@ -340,51 +340,56 @@
             </div>
             <div class="modal-footer">
                 <button class="btn-secondary" data-action="cancel">Cancel</button>
-                <button class="btn-primary" data-action="save">Save Changes</button>
+                <button type="submit" class="btn-primary" data-action="save">Save Changes</button>
             </div>
         </div>
     </div>
 
-    <!-- Post Details Modal -->
-    <div class="modal" id="postDetailsModal" style="display: none">
+    <!-- User Details Modal -->
+    <div class="modal" id="userDetailsModal">
         <div class="modal-overlay"></div>
         <div class="modal-container">
             <div class="modal-header">
-                <h2 class="modal-title">Post Details</h2>
+                <h2 class="modal-title">User Details</h2>
                 <button class="modal-close">
                     <i class="fas fa-times"></i>
                 </button>
             </div>
             <div class="modal-content">
-                <div class="post-details">
-                    <div class="post-preview">
-                        <img src="" alt="Post thumbnail" id="detailsThumbnail">
-                        <div class="post-info">
-                            <div class="post-status-badge"></div>
-                            <div class="post-category-badge"></div>
-                            <div class="post-featured-badge"></div>
+                <div class="user-details">
+                    <div class="user-preview">
+                        <img src="" alt="User avatar" id="detailsAvatar">
+                        <div class="user-badges">
+                            <div class="role-badge"></div>
+                            <div class="status-badge"></div>
                         </div>
                     </div>
 
                     <div class="details-section">
                         <div class="detail-group">
-                            <label>Title</label>
-                            <div class="detail-value" id="detailsTitle"></div>
+                            <label>Full Name</label>
+                            <div class="detail-value" id="detailsFullName"></div>
+                        </div>
+
+                        <div class="detail-row">
+                            <div class="detail-group">
+                                <label>Gender</label>
+                                <div class="detail-value" id="detailsGender"></div>
+                            </div>
+                            <div class="detail-group">
+                                <label>Mobile</label>
+                                <div class="detail-value" id="detailsMobile"></div>
+                            </div>
                         </div>
 
                         <div class="detail-group">
-                            <label>Author</label>
-                            <div class="detail-value" id="detailsAuthor"></div>
+                            <label>Email</label>
+                            <div class="detail-value" id="detailsEmail"></div>
                         </div>
 
                         <div class="detail-group">
-                            <label>Brief Information</label>
-                            <div class="detail-value" id="detailsBrief"></div>
-                        </div>
-
-                        <div class="detail-group">
-                            <label>Description</label>
-                            <div class="detail-value" id="detailsDescription"></div>
+                            <label>Address</label>
+                            <div class="detail-value" id="detailsAddress"></div>
                         </div>
                     </div>
                 </div>
@@ -393,14 +398,14 @@
                 <button class="btn-secondary" data-action="close">Close</button>
                 <button class="btn-primary" data-action="edit">
                     <i class="fas fa-edit"></i>
-                    Edit Post
+                    Edit User
                 </button>
             </div>
         </div>
     </div>
 
     <script src="assets/js/main.js"></script>
-    <script src="assets/js/posts.js"></script>
+    <script src="assets/js/users.js"></script>
 </body>
 
 </html>
